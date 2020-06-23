@@ -1,4 +1,4 @@
-# SOLID-Single-Responsibility using typescript
+# SOLID-Single-Responsibility-Principle using typescript
 
 To compile and avoid problem: TS1056: Accessors are only available when targeting ECMAScript 5 and higher.
 
