@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -21,14 +20,14 @@ var Vehiculo = /** @class */ (function () {
         get: function () {
             return this._modelo;
         },
-        enumerable: false,
+        enumerable: true,
         configurable: true
     });
     Object.defineProperty(Vehiculo.prototype, "num_ruedas", {
         get: function () {
             return this._num_ruedas;
         },
-        enumerable: false,
+        enumerable: true,
         configurable: true
     });
     return Vehiculo;

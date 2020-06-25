@@ -51,4 +51,3 @@ let vehiculo2 = new Bike(5000);
 
 let res = calculator.Area([vehiculo1,vehiculo2]);
 console.log("Total Kilometraje: "+res);
-
