@@ -1,18 +1,5 @@
 class Vehiculo {
-    private _modelo: string;
-    private _num_ruedas: number;
-
-    constructor(modelo: string, num_ruedas: number) {
-        this._modelo = modelo;
-        this._num_ruedas = num_ruedas;
-    }
-
-    get modelo():string {
-        return this._modelo;
-    }
-
-    get num_ruedas():number {
-        return this._num_ruedas;
+    constructor(public modelo: string, public num_ruedas: number) {
     }
 }
 
