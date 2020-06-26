@@ -1,54 +1,96 @@
-class Vehicle {
-    private _modelo: string;
-    private _num_ruedas: number;
-    private _km_actual: number;
 
-    constructor(modelo: string, num_ruedas: number, km_actual: number) {
-        this._modelo = modelo;
-        this._num_ruedas = num_ruedas;
-        this._km_actual = km_actual;
+interface IVehicle {
+    modelo: () => string;
+    num_ruedas: () => number;
+    toString:() => string;
+}
+
+abstract class Distance {
+    abstract km(): number;  
+}
+
+class Vehicle extends Distance implements IVehicle {
+    
+    constructor(protected _modelo: string, protected _num_ruedas: number, protected _km_actual: number) {
+        super();
     }
 
-    get modelo():string {
-        return this._modelo;
+    modelo(): string {
+        return this._modelo
     }
 
-    get num_ruedas():number {
-        return this._num_ruedas;
+    num_ruedas(): number {
+        return this._num_ruedas
+    }
+    
+    km(): number {
+        throw new Error("Method not implemented.");
     }
 
-    get km_actual():number {
-        return this._km_actual;
+    toString() : string {
+        return  "\tModelo: "+this.modelo() +"\tNum Ruendas: "+ this.num_ruedas() +"\tKm: "+this.km()+"\n"
     }
 }
 
+class Camion extends Vehicle {
+
+    km(): number {
+        return this._km_actual
+    }
+
+    constructor(km_actual: number) {
+        super('Camion', 4, km_actual);
+    } 
+}
+
 class Car extends Vehicle {
+
+    km(): number {
+        return this._km_actual
+    }
+   
     constructor(km_actual: number) {
         super('Coche', 4, km_actual);
     } 
 }
 
-class Bike extends Vehicle {
+class MotorBike extends Vehicle {
+
+    km(): number {
+        return this._km_actual
+    }
+
     constructor(km_actual: number) {
-        super('Moto', 2, km_actual);
+        super('M-Bike', 2, km_actual);
     } 
+
 }
 
-class Calculator {
-    Area(vehicles: Vehicle[] ) : number {
-        let kilometraje : number = 0;
+class Printable {
+    toSting(vehicles: Vehicle[] ) : void {
+        let str = String("");
         vehicles.forEach(it => {
-            kilometraje += it.km_actual;
+            str += it.toString()
         });
-
-        return kilometraje;
+        console.log("ToString\n "+str);
     }
 }
 
+class Calculator {
+    km(vehicles: Vehicle[] ) : void {
+        let kilometraje : number = 0;
+        vehicles.forEach(it => {
+            kilometraje += it.km()
+        });
+        console.log("Total Kilometraje: "+kilometraje);
+    }
+}
+
+let printable = new Printable();
 let calculator = new Calculator();
 let vehiculo1 = new Car(25000);
-let vehiculo2 = new Bike(5000);
+let vehiculo2 = new MotorBike(400);
+let vehiculo3 = new Camion(70000);
 
-let res = calculator.Area([vehiculo1,vehiculo2]);
-console.log("Total Kilometraje: "+res);
-
+printable.toSting([vehiculo1,vehiculo2,vehiculo3]);
+calculator.km([vehiculo1,vehiculo2,vehiculo3]);
