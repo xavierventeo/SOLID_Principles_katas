@@ -67,7 +67,7 @@ class MotorBike extends Vehicle {
 }
 
 class Printable {
-    toSting(vehicles: Vehicle[] ) : void {
+    toString(vehicles: Vehicle[] ) : void {
         let str = String("");
         vehicles.forEach(it => {
             str += it.toString()
@@ -76,21 +76,10 @@ class Printable {
     }
 }
 
-class Calculator {
-    km(vehicles: Vehicle[] ) : void {
-        let kilometraje : number = 0;
-        vehicles.forEach(it => {
-            kilometraje += it.km()
-        });
-        console.log("Total Kilometraje: "+kilometraje);
-    }
-}
 
 let printable = new Printable();
-let calculator = new Calculator();
 let vehiculo1 = new Car(25000);
 let vehiculo2 = new MotorBike(400);
 let vehiculo3 = new Camion(70000);
 
-printable.toSting([vehiculo1,vehiculo2,vehiculo3]);
-calculator.km([vehiculo1,vehiculo2,vehiculo3]);
+printable.toString([vehiculo1,vehiculo2,vehiculo3]);
